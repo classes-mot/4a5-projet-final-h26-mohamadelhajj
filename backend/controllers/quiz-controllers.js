@@ -4,7 +4,26 @@ import HttpError from "../utils/http-error.js";
 import { validationResult } from "express-validator";
 import mongoose from "mongoose";
 
-const getQuizByUserId = async (req, res, next) => {};
+const getQuizByUserId = async (req, res, next) => {
+  const userId = req.params.uid;
+
+  let quizForUser;
+  try {
+    quizForUser = await Quiz.find({ user: userId });
+  } catch (e) {
+    console.log(e);
+    const err = new HttpError("Une erreur BD est survenue", 500);
+    return next(err);
+  }
+
+  if (!quizForUser || quizForUser.length === 0) {
+    return next(new HttpError("Aucun quiz trouvé pour cet utilisateur", 404));
+  }
+
+  res.json({
+    quiz: quizForUser.map((quiz) => quiz.toObject({ getters: true })),
+  });
+};
 
 const createQuiz = async (req, res, next) => {
   const validationErrors = validationResult(req);

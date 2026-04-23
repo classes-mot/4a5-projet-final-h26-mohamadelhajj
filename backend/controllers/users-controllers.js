@@ -87,7 +87,7 @@ const login = async (req, res, next) => {
 };
 
 const getUserById = async (req, res, next) => {
-  const userId = req.params.jid;
+  const userId = req.params.uid;
 
   let user;
   try {
