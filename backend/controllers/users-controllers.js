@@ -86,58 +86,13 @@ const login = async (req, res, next) => {
   });
 };
 
-const getUserById = async (req, res, next) => {
-  const userId = req.params.uid;
-
-  let user;
-  try {
-    user = await User.findById(userId);
-  } catch (e) {
-    console.log(e);
-    const erreur = new HttpError("Une erreur BD est survenue", 500);
-    return next(erreur);
-  }
-
-  if (!user) {
-    return next(new HttpError("Aucun user trouvé", 404));
-  }
-
-  res.json({
-    user: user.toObject({ getters: true }),
-  });
-};
-
 const getAllUsers = async (req, res, next) => {
   const users = await User.find().exec();
   res.json({ users: users });
 };
 
-const updateUser = async (req, res, next) => {
-  const userId = req.params.jid;
-  const userUpdate = req.body;
-
-  try {
-    const user = await User.findById(userId);
-
-    if (!user) {
-      return next(new HttpError("Aucun user trouvé", 404));
-    }
-
-    user.updateOne(userUpdate);
-
-    const updatedUser = await User.findById(userId);
-
-    res.status(200).json({ user: updateUser.toObject({ getters: true }) });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ message: "Erreur lors de la mis à jour du jeu." });
-  }
-};
-
 export default {
   register,
   login,
-  getUserById,
   getAllUsers,
-  updateUser,
 };
