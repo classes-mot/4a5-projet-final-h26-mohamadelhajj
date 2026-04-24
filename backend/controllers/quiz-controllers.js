@@ -83,7 +83,7 @@ const updateQuiz = async (req, res, next) => {
     res.status(200).json({ quiz: updatedQuiz.toObject({ getters: true }) });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ message: "Erreur lors de la mis à jour du jeu." });
+    res.status(500).json({ message: "Erreur lors de la mis à jour du quiz." });
   }
 };
 
@@ -104,7 +104,7 @@ const deleteQuiz = async (req, res, next) => {
     res.status(200).json({ message: "Quiz supprimé" });
   } catch (e) {
     console.error(e);
-    res.status(500).json({ message: "Erreur lors de la suppression du jeu." });
+    res.status(500).json({ message: "Erreur lors de la suppression du quiz." });
   }
 };
 
