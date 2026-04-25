@@ -70,15 +70,15 @@ const updateQuiz = async (req, res, next) => {
   const quizUpdates = req.body;
 
   try {
-    const quiz = await Quiz.findById(quizId);
+    const updatedQuiz = await Quiz.findByIdAndUpdate(
+      quizId,
+      quizUpdates,
+      { new: true, runValidators: true }, // { new: true } pour renvoyer l'objet modifié
+    ).populate("user");
 
-    if (!quiz) {
+    if (!updatedQuiz) {
       return res.status(404).json({ message: "Quiz non trouvé" });
     }
-
-    quiz.updateOne(quizUpdates);
-
-    const updatedQuiz = await Quiz.findById(quizId).populate("user");
 
     res.status(200).json({ quiz: updatedQuiz.toObject({ getters: true }) });
   } catch (e) {
