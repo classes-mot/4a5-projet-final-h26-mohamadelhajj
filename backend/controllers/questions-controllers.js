@@ -34,7 +34,7 @@ const createQuestion = async (req, res, next) => {
       new HttpError("données saisies invalides valider votre payload", 422),
     );
   }
-  const { nomQuestion, reponse } = req.body;
+  const { nomQuestion, typeQuestion, reponse } = req.body;
   const quizId = req.quizData.quizId;
   let quiz;
   try {
@@ -51,6 +51,7 @@ const createQuestion = async (req, res, next) => {
 
   const createdQuestion = new Question({
     nomQuestion,
+    typeQuestion,
     reponse,
     quiz: quizId,
   });
@@ -70,16 +71,15 @@ const updateQuestion = async (req, res, next) => {
   const questionUpdates = req.body;
 
   try {
-    const question = await Question.findById(questionId);
+    const updatedQuestion = await Question.findByIdAndUpdate(
+      questionId,
+      questionUpdates,
+      { new: true, runValidators: true },
+    ).populate("quiz");
 
-    if (!question) {
-      return res.status(404).json({ message: "Question non trouvé" });
+    if (!updatedQuestion) {
+      return res.status(404).json({ message: "Quiz non trouvé" });
     }
-
-    question.updateOne(questionUpdates);
-
-    const updatedQuestion =
-      await Question.findById(questionId).populate("quiz");
 
     res.status(200).json({ quiz: updatedQuestion.toObject({ getters: true }) });
   } catch (e) {
@@ -113,7 +113,7 @@ const deleteQuestion = async (req, res, next) => {
 };
 
 export default {
-  getQuestionsByUserId,
+  getQuestionsByQuizId,
   createQuestion,
   updateQuestion,
   deleteQuestion,

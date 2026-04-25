@@ -1,6 +1,7 @@
 import express from "express";
 import usersRoutes from "./routes/users-routes.js";
 import quizRoutes from "./routes/quiz-routes.js";
+import questionsRoutes from "./routes/questions-routes.js";
 import errorHandler from "./handler/error-handler.js";
 import { connectDB } from "./utils/bd.js";
 
@@ -23,6 +24,8 @@ app.use((req, res, next) => {
 app.use("/api/users", usersRoutes);
 
 app.use("/api/quiz/", quizRoutes);
+
+app.use("/api/quiz/", questionsRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Route non trouvée");

@@ -1,7 +1,7 @@
 import express from "express";
 import quizControllers from "../controllers/quiz-controllers.js";
 import { check } from "express-validator";
-import checkAuth from "../middleware/check-auth.js";
+import { checkAuth } from "../middleware/check-auth.js";
 
 const router = express.Router();
 
