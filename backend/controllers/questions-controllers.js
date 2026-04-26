@@ -21,7 +21,7 @@ const getQuestionsByQuizId = async (req, res, next) => {
   }
 
   res.json({
-    question: questionsForQuiz.map((question) =>
+    questions: questionsForQuiz.map((question) =>
       question.toObject({ getters: true }),
     ),
   });
@@ -34,8 +34,8 @@ const createQuestion = async (req, res, next) => {
       new HttpError("données saisies invalides valider votre payload", 422),
     );
   }
-  const { nomQuestion, typeQuestion, reponse } = req.body;
-  const quizId = req.quizData.quizId;
+
+  const quizId = req.params.qid;
   let quiz;
   try {
     quiz = await Quiz.findById(quizId);
@@ -45,16 +45,28 @@ const createQuestion = async (req, res, next) => {
     return next(err);
   }
   if (!quiz) {
-    const err = new HttpError("Utilisateur non trouvé", 404);
+    const err = new HttpError("Quiz non trouvé", 404);
     return next(err);
   }
+  const { nomQuestion, typeQuestion, choix, reponse } = req.body; // Move this UP
 
-  const createdQuestion = new Question({
-    nomQuestion,
-    typeQuestion,
-    reponse,
-    quiz: quizId,
-  });
+  let createdQuestion;
+  if (typeQuestion === "choix" || typeQuestion === "choixMultiple") {
+    createdQuestion = new Question({
+      nomQuestion,
+      typeQuestion,
+      choix,
+      reponse,
+      quiz: quizId,
+    });
+  } else {
+    createdQuestion = new Question({
+      nomQuestion,
+      typeQuestion,
+      reponse,
+      quiz: quizId,
+    });
+  }
   try {
     await createdQuestion.save();
     quiz.questions.push(createdQuestion);

@@ -25,7 +25,7 @@ app.use("/api/users", usersRoutes);
 
 app.use("/api/quiz/", quizRoutes);
 
-app.use("/api/quiz/", questionsRoutes);
+app.use("/api/questions/", questionsRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Route non trouvée");
