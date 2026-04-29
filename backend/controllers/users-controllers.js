@@ -3,6 +3,13 @@ import { User } from "../models/user.js";
 import HttpError from "../utils/http-error.js";
 
 const register = async (req, res, next) => {
+  const validationErrors = validationResult(req);
+  if (!validationErrors.isEmpty()) {
+    return next(
+      new HttpError("données saisies invalides valider votre payload", 422),
+    );
+  }
+
   const { name, email, password, quiz } = req.body;
   let existingUser;
   try {

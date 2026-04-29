@@ -21,7 +21,7 @@ const getQuestionsByQuizId = async (req, res, next) => {
   }
 
   res.json({
-    question: questionsForQuiz.map((question) =>
+    questions: questionsForQuiz.map((question) =>
       question.toObject({ getters: true }),
     ),
   });
@@ -34,8 +34,8 @@ const createQuestion = async (req, res, next) => {
       new HttpError("données saisies invalides valider votre payload", 422),
     );
   }
-  const { nomQuestion, reponse } = req.body;
-  const quizId = req.quizData.quizId;
+
+  const quizId = req.params.qid;
   let quiz;
   try {
     quiz = await Quiz.findById(quizId);
@@ -45,15 +45,28 @@ const createQuestion = async (req, res, next) => {
     return next(err);
   }
   if (!quiz) {
-    const err = new HttpError("Utilisateur non trouvé", 404);
+    const err = new HttpError("Quiz non trouvé", 404);
     return next(err);
   }
+  const { nomQuestion, typeQuestion, choix, reponse } = req.body; // Move this UP
 
-  const createdQuestion = new Question({
-    nomQuestion,
-    reponse,
-    quiz: quizId,
-  });
+  let createdQuestion;
+  if (typeQuestion === "choix" || typeQuestion === "choixMultiple") {
+    createdQuestion = new Question({
+      nomQuestion,
+      typeQuestion,
+      choix,
+      reponse,
+      quiz: quizId,
+    });
+  } else {
+    createdQuestion = new Question({
+      nomQuestion,
+      typeQuestion,
+      reponse,
+      quiz: quizId,
+    });
+  }
   try {
     await createdQuestion.save();
     quiz.questions.push(createdQuestion);
@@ -70,16 +83,15 @@ const updateQuestion = async (req, res, next) => {
   const questionUpdates = req.body;
 
   try {
-    const question = await Question.findById(questionId);
+    const updatedQuestion = await Question.findByIdAndUpdate(
+      questionId,
+      questionUpdates,
+      { new: true, runValidators: true },
+    ).populate("quiz");
 
-    if (!question) {
-      return res.status(404).json({ message: "Question non trouvé" });
+    if (!updatedQuestion) {
+      return res.status(404).json({ message: "Quiz non trouvé" });
     }
-
-    question.updateOne(questionUpdates);
-
-    const updatedQuestion =
-      await Question.findById(questionId).populate("quiz");
 
     res.status(200).json({ quiz: updatedQuestion.toObject({ getters: true }) });
   } catch (e) {
@@ -113,7 +125,7 @@ const deleteQuestion = async (req, res, next) => {
 };
 
 export default {
-  getQuestionsByUserId,
+  getQuestionsByQuizId,
   createQuestion,
   updateQuestion,
   deleteQuestion,
