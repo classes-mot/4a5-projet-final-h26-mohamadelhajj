@@ -5,7 +5,10 @@ import { useTransition } from "react";
 
 const SideDrawer = (props) => {
   const content = (
-    <aside className="side-drawer" onClick={props.onClick}>
+    <aside
+      className={`side-drawer ${props.show ? "open" : ""}`}
+      onClick={props.onClick}
+    >
       {props.children}
     </aside>
   );

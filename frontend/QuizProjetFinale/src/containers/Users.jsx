@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import UsersList from "../components/userList/UserList";
+import UserList from "../components/userList/UserList";
 import ModalMessageErreur from "../components/UIElements/ModalMessageErreur";
 import Spinner from "../components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../hooks/http-hook";

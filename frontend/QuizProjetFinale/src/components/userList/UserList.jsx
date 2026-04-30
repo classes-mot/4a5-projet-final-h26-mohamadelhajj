@@ -1,6 +1,6 @@
 import UserItem from "../userItem/UserItem";
 import Card from "../UIElements/Card";
-import "./UsersList.css";
+import "./UserList.css";
 
 const UsersList = (props) => {
   if (props.items.length === 0) {
@@ -20,7 +20,7 @@ const UsersList = (props) => {
           key={user.id}
           id={user.id}
           name={user.name}
-          quizCount={user.quiz}
+          quizCount={user.quiz.length}
         />
       ))}
     </ul>
