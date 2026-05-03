@@ -48,6 +48,23 @@
   color: white;
 }
 
+.nav-btn-link {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font: inherit;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.nav-btn-link:hover {
+  background: white;
+  color: #2c3e50;
+}
+
 @media (min-width: 768px) {
   .nav-links {
     flex-direction: row;
