@@ -9,6 +9,7 @@ import RootLayout from "./containers/Roots";
 import ErrorPage from "./Containers/ErrorPage";
 import { AuthContext } from "./context/auth-context";
 import "./App.css";
+import UserQuiz from "./containers/UserQuiz";
 
 const routerLogin = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const routerLogin = createBrowserRouter([
     children: [
       { index: true, element: <Users /> },
       { path: "users", element: <Users /> },
+      { path: ":userId/quizzes", element: <UserQuiz /> },
     ],
   },
 ]);
@@ -30,6 +32,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Users /> },
       { path: "users", element: <Users /> },
+      { path: ":userId/quizzes", element: <UserQuiz /> },
     ],
   },
 ]);

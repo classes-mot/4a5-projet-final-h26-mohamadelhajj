@@ -7,7 +7,7 @@ const UserItem = (props) => {
   return (
     <li className="user-item">
       <Card className="user-item__content">
-        <Link to={`/${props.id}/quiz`}>
+        <Link to={`/${props.id}/quizzes`}>
           <div className="user-item__info">
             <h2>{props.name}</h2>
             <h3>
