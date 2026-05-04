@@ -9,7 +9,7 @@ const QuizItem = (props) => {
       <Card className="quiz-item__content">
         <Link to={`/${props.id}/questions`}>
           <div className="quiz-item__info">
-            <h2>{props.name}</h2>
+            <h2>{props.titre}</h2>
             <h3>
               {props.questionCount ?? 0}{" "}
               {props.questionCount <= 1 ? "question" : "questions"}

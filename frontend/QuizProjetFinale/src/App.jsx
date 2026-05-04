@@ -5,11 +5,12 @@ import {
 } from "react-router-dom";
 import { useState, useCallback } from "react";
 import Users from "./containers/Users";
+import UserQuiz from "./containers/UserQuiz";
+import NewQuiz from "./containers/NewQuiz";
 import RootLayout from "./containers/Roots";
 import ErrorPage from "./Containers/ErrorPage";
 import { AuthContext } from "./context/auth-context";
 import "./App.css";
-import UserQuiz from "./containers/UserQuiz";
 
 const routerLogin = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const routerLogin = createBrowserRouter([
       { index: true, element: <Users /> },
       { path: "users", element: <Users /> },
       { path: ":userId/quizzes", element: <UserQuiz /> },
+      { path: "quiz/add", element: <NewQuiz /> },
     ],
   },
 ]);

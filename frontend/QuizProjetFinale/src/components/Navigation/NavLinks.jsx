@@ -122,7 +122,7 @@ const NavLinks = (props) => {
               <NavLink to={`/${auth.userId}/quizzes`}>MY QUIZZES</NavLink>
             </li>
             <li>
-              <NavLink to="/tasks/new">ADD QUIZ</NavLink>
+              <NavLink to="/quiz/add">ADD QUIZ</NavLink>
             </li>
             <li>
               <button onClick={auth.logout}>LOGOUT</button>

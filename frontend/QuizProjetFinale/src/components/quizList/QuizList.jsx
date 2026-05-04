@@ -19,7 +19,7 @@ const QuizList = (props) => {
         <QuizItem
           key={quiz.id}
           id={quiz.id}
-          name={quiz.name}
+          titre={quiz.titre}
           questionCount={quiz.questions.length}
         />
       ))}

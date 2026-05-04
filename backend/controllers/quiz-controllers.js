@@ -33,7 +33,7 @@ const createQuiz = async (req, res, next) => {
       new HttpError("données saisies invalides valider votre payload", 422),
     );
   }
-  const { titre, typeQuestion, questions } = req.body;
+  const { titre, questions } = req.body;
   const userId = req.userData.userId;
   let user;
   try {
@@ -50,7 +50,6 @@ const createQuiz = async (req, res, next) => {
 
   const createdQuiz = new Quiz({
     titre,
-    typeQuestion,
     user: userId,
     questions,
   });
