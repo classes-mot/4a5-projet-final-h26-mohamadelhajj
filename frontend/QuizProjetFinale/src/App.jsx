@@ -7,6 +7,7 @@ import { useState, useCallback } from "react";
 import Users from "./containers/Users";
 import UserQuiz from "./containers/UserQuiz";
 import NewQuiz from "./containers/NewQuiz";
+import UpdateQuiz from "./containers/UpdateQuiz";
 import RootLayout from "./containers/Roots";
 import ErrorPage from "./Containers/ErrorPage";
 import { AuthContext } from "./context/auth-context";
@@ -22,6 +23,7 @@ const routerLogin = createBrowserRouter([
       { path: "users", element: <Users /> },
       { path: ":userId/quizzes", element: <UserQuiz /> },
       { path: "quiz/add", element: <NewQuiz /> },
+      { path: "quiz/edit/:quizId", element: <UpdateQuiz /> },
     ],
   },
 ]);
