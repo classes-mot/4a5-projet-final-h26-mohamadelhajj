@@ -8,6 +8,8 @@ import Users from "./containers/Users";
 import UserQuiz from "./containers/UserQuiz";
 import NewQuiz from "./containers/NewQuiz";
 import UpdateQuiz from "./containers/UpdateQuiz";
+import QuestionQuiz from "./containers/QuestionQuiz";
+import NewQuestion from "./containers/NewQuestion";
 import RootLayout from "./containers/Roots";
 import ErrorPage from "./Containers/ErrorPage";
 import { AuthContext } from "./context/auth-context";
@@ -24,6 +26,8 @@ const routerLogin = createBrowserRouter([
       { path: ":userId/quizzes", element: <UserQuiz /> },
       { path: "quiz/add", element: <NewQuiz /> },
       { path: "quiz/edit/:quizId", element: <UpdateQuiz /> },
+      { path: ":quizId/questions", element: <QuestionQuiz /> },
+      { path: ":quizId/question/add", element: <NewQuestion /> },
     ],
   },
 ]);
@@ -37,6 +41,7 @@ const router = createBrowserRouter([
       { index: true, element: <Users /> },
       { path: "users", element: <Users /> },
       { path: ":userId/quizzes", element: <UserQuiz /> },
+      { path: ":quizId/questions", element: <QuestionQuiz /> },
     ],
   },
 ]);

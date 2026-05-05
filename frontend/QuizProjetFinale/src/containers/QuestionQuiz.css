@@ -1,0 +1,5 @@
+.question-quiz__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}

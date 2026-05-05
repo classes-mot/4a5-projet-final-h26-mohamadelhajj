@@ -4,6 +4,7 @@ import QuizList from "../components/quizList/QuizList";
 import ModalMessageErreur from "../components/UIElements/ModalMessageErreur";
 import Spinner from "../components/UIElements/LoadingSpinner";
 import { useHttpClient } from "../hooks/http-hook";
+import Card from "../components/UIElements/Card";
 
 const UserQuiz = () => {
   const userId = useParams().userId;
@@ -27,13 +28,29 @@ const UserQuiz = () => {
     fetchQuizzes();
   }, [sendRequest, userId]);
 
+  const quizDeleteHandler = (deletedQuizId) => {
+    setLoadedQuiz((prevQuizzes) =>
+      prevQuizzes.filter((quiz) => quiz.id !== deletedQuizId),
+    );
+  };
+
+  if (loadedquiz.length === 0) {
+    return (
+      <div className="center">
+        <Card>
+          <h2>No Quizzes found.</h2>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <>
       <div>
         {isLoading && <Spinner />}
         <ModalMessageErreur message={error} onClose={() => clearError()} />
       </div>
-      <QuizList items={loadedquiz} />
+      <QuizList items={loadedquiz} onDelete={quizDeleteHandler} />
     </>
   );
 };

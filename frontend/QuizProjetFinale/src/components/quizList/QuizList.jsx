@@ -21,6 +21,7 @@ const QuizList = (props) => {
           id={quiz.id}
           titre={quiz.titre}
           questionCount={quiz.questions.length}
+          onDelete={props.onDelete}
         />
       ))}
     </ul>
