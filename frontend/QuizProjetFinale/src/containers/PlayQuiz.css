@@ -1,0 +1,277 @@
+.pq-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Progress */
+.pq-progress-bg {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.pq-progress-fill {
+  height: 4px;
+  background: #534ab7;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* Meta */
+.pq-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.pq-badge {
+  background: #eeedfe;
+  color: #3c3489;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.pq-meta-score {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Question card */
+.pq-question-card {
+  background: #fff;
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.pq-question-text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+  color: #111;
+}
+
+.pq-question-type {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Options */
+.pq-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pq-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 0.5px solid rgba(0, 0, 0, 0.18);
+  background: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  color: #111;
+  text-align: left;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+  width: 100%;
+  font-family: inherit;
+}
+
+.pq-option-btn:hover:not(:disabled) {
+  background: #f9fafb;
+  border-color: #534ab7;
+}
+
+.pq-option-btn:disabled {
+  cursor: default;
+}
+
+.pq-option-btn.correct {
+  border: 2px solid #0f6e56;
+  background: #e1f5ee;
+  color: #085041;
+}
+
+.pq-option-btn.wrong {
+  border: 2px solid #993c1d;
+  background: #faece7;
+  color: #712b13;
+}
+
+/* Option letter badge */
+.pq-option-letter {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+  color: #374151;
+}
+
+.pq-option-btn.correct .pq-option-letter {
+  background: #5dcaa5;
+  color: #04342c;
+}
+
+.pq-option-btn.wrong .pq-option-letter {
+  background: #f0997b;
+  color: #4a1b0c;
+}
+
+/* Réponse libre (typeQuestion !== choix multiple) */
+.pq-open-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 0.5px solid rgba(0, 0, 0, 0.18);
+  font-size: 15px;
+  font-family: inherit;
+  color: #111;
+  background: #fff;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.15s;
+}
+
+.pq-open-input:focus {
+  outline: none;
+  border-color: #534ab7;
+}
+
+.pq-open-input:disabled {
+  background: #f9fafb;
+  cursor: default;
+}
+
+.pq-open-submit {
+  margin-top: 10px;
+  background: #534ab7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.pq-open-submit:hover {
+  background: #3c3489;
+}
+
+/* Feedback */
+.pq-feedback {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+.pq-feedback.ok {
+  background: #e1f5ee;
+  color: #085041;
+}
+
+.pq-feedback.ko {
+  background: #faece7;
+  color: #712b13;
+}
+
+/* Navigation */
+.pq-nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.pq-btn-primary {
+  background: #534ab7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.pq-btn-primary:hover {
+  background: #3c3489;
+}
+
+.pq-btn-secondary {
+  background: #f3f4f6;
+  color: #111;
+  border: 0.5px solid rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.pq-btn-secondary:hover {
+  border-color: #534ab7;
+  color: #534ab7;
+}
+
+/* Score final */
+.pq-score-card {
+  background: #fff;
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.pq-score-big {
+  font-size: 48px;
+  font-weight: 500;
+  color: #534ab7;
+  margin: 0;
+}
+
+.pq-score-label {
+  font-size: 16px;
+  color: #6b7280;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.pq-btn-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* Spinner centré */
+.pq-spinner-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+}

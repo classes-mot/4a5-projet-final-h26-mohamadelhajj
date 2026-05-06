@@ -68,6 +68,9 @@ const QuizItem = (props) => {
 
               {auth.isLoggedIn && (
                 <div className="quiz-item__actions">
+                  <Link to={`/quiz/${props.id}/play`}>
+                    <button>PLAY</button>
+                  </Link>
                   <Link to={`/quiz/edit/${props.id}`}>
                     <button>EDIT</button>
                   </Link>

@@ -11,6 +11,7 @@ import UpdateQuiz from "./containers/UpdateQuiz";
 import QuestionQuiz from "./containers/QuestionQuiz";
 import NewQuestion from "./containers/NewQuestion";
 import UpdateQuestion from "./containers/UpdateQuestion";
+import PlayQuiz from "./containers/PlayQuiz";
 import RootLayout from "./containers/Roots";
 import ErrorPage from "./Containers/ErrorPage";
 import { AuthContext } from "./context/auth-context";
@@ -33,6 +34,7 @@ const routerLogin = createBrowserRouter([
         path: ":quizId/question/edit/:questionId",
         element: <UpdateQuestion />,
       },
+      { path: "/quiz/:quizId/play", element: <PlayQuiz /> },
     ],
   },
 ]);

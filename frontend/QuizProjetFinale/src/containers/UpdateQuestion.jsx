@@ -5,10 +5,9 @@ import ModalMessageErreur from "../components/UIElements/ModalMessageErreur";
 import Spinner from "../components/UIElements/LoadingSpinner";
 
 function UpdateQuestion() {
-  const { quizId, questionId } = useParams();
+  const quizId = useParams().quizId;
+  const questionId = useParams().questionId;
   const [loadedQuestion, setLoadedQuestion] = useState([]);
-  const [typeQuestion, setTypeQuestion] = useState("");
-  const [choices, setChoices] = useState([]);
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -18,20 +17,7 @@ function UpdateQuestion() {
         const response = await sendRequest(
           `http://localhost:5000/api/questions/getQuestions/${quizId}`,
         );
-
         setLoadedQuestion(response.questions);
-
-        const question = response.questions.find((q) => q._id === questionId);
-
-        if (question) {
-          setTypeQuestion(question.typeQuestion);
-
-          if (question.choices && question.choices.length > 0) {
-            setChoices(question.choices);
-          } else {
-            setChoices([""]);
-          }
-        }
       } catch (err) {
         console.error(err);
       }
@@ -40,23 +26,6 @@ function UpdateQuestion() {
   }, [sendRequest, quizId, questionId]);
 
   const questionSelected = loadedQuestion.find((qu) => qu._id === questionId);
-
-  // changer type
-  const handleTypeChange = (e) => {
-    setTypeQuestion(e.target.value);
-  };
-
-  // modifier choix
-  const handleChoiceChange = (index, value) => {
-    const updated = [...choices];
-    updated[index] = value;
-    setChoices(updated);
-  };
-
-  // ajouter choix
-  const addChoice = () => {
-    setChoices([...choices, ""]);
-  };
 
   if (!questionSelected) {
     return (
@@ -75,10 +44,6 @@ function UpdateQuestion() {
       id: questionId,
       nomQuestion: data.nomQuestion,
       typeQuestion: data.typeQuestion,
-      choices:
-        typeQuestion === "choix" || typeQuestion === "choixMultiple"
-          ? choices
-          : [],
       reponse: data.reponse,
       quiz: quizId,
     };
@@ -93,12 +58,10 @@ function UpdateQuestion() {
   return (
     <form onSubmit={UpdateQuestionSubmitHandler}>
       <h2>Update question</h2>
-
       <div>
         {isLoading && <Spinner />}
         <ModalMessageErreur message={error} onClose={() => clearError()} />
       </div>
-
       <div className="control">
         <label>Question name</label>
         <input
@@ -107,40 +70,15 @@ function UpdateQuestion() {
           defaultValue={questionSelected.nomQuestion}
         />
       </div>
-
       <div className="control">
         <label>Type of question</label>
         <select
           name="typeQuestion"
           defaultValue={questionSelected.typeQuestion}
-          onChange={handleTypeChange}
         >
           <option value="Ecrire">Writing</option>
-          <option value="choix">Choice</option>
-          <option value="choixMultiple">Multiple choice</option>
         </select>
       </div>
-
-      {(typeQuestion === "choix" || typeQuestion === "choixMultiple") && (
-        <div className="control">
-          <label>Choices</label>
-
-          {choices.map((choice, index) => (
-            <input
-              key={index}
-              type="text"
-              value={choice}
-              onChange={(e) => handleChoiceChange(index, e.target.value)}
-              placeholder={`Choice ${index + 1}`}
-            />
-          ))}
-
-          <button type="button" onClick={addChoice}>
-            + Add choice
-          </button>
-        </div>
-      )}
-
       <div className="control">
         <label htmlFor="reponse">Answer</label>
         <input
@@ -150,7 +88,6 @@ function UpdateQuestion() {
           defaultValue={questionSelected.reponse}
         />
       </div>
-
       <p className="form-actions">
         <button type="reset" className="button button-flat">
           Reset
