@@ -47,14 +47,14 @@ function UpdateQuiz() {
       id: quizId,
       titre: data.titre,
       user: auth.userId,
-      questions: [],
+      questions: [quizSelected.questions],
     };
     console.log(JSON.stringify(updatedQuiz));
     console.log("---------------");
 
     await sendRequest(
       `http://localhost:5000/api/quiz/updateQuiz/${quizId}`,
-      "POST",
+      "PATCH",
       JSON.stringify(updatedQuiz),
       {
         Authorization: "Bearer " + auth.token,
