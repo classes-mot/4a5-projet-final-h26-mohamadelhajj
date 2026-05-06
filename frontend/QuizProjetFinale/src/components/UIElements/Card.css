@@ -1,9 +1,10 @@
 .card {
   margin: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(168, 85, 247, 0.2);
+  border-radius: 12px;
   padding: 1rem;
   overflow: hidden;
-  background: #1f2228;
-  color: #e4e6eb;
+  background: linear-gradient(135deg, #1a1729, #12111a);
+  color: #c4b5fd;
+  border: 1px solid var(--accent-border);
 }

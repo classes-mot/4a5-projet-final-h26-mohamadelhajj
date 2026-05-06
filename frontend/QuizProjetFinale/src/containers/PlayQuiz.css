@@ -7,7 +7,7 @@
 /* Progress */
 .pq-progress-bg {
   height: 4px;
-  background: #e5e7eb;
+  background: #2d2a3e;
   border-radius: 2px;
   margin-bottom: 1.5rem;
   overflow: hidden;
@@ -15,7 +15,7 @@
 
 .pq-progress-fill {
   height: 4px;
-  background: #534ab7;
+  background: linear-gradient(90deg, #a855f7, #c084fc);
   border-radius: 2px;
   transition: width 0.5s ease;
 }
@@ -29,23 +29,24 @@
 }
 
 .pq-badge {
-  background: #eeedfe;
-  color: #3c3489;
+  background: var(--accent-bg);
+  color: #c084fc;
   padding: 4px 12px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 500;
+  border: 1px solid var(--accent-border);
 }
 
 .pq-meta-score {
   font-size: 13px;
-  color: #6b7280;
+  color: #c4b5fd;
 }
 
 /* Question card */
 .pq-question-card {
-  background: #fff;
-  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #1a1729, #12111a);
+  border: 1px solid var(--accent-border);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.25rem;
@@ -56,12 +57,12 @@
   font-weight: 500;
   line-height: 1.5;
   margin: 0;
-  color: #111;
+  color: #e9d5ff;
 }
 
 .pq-question-type {
   font-size: 12px;
-  color: #9ca3af;
+  color: #c084fc;
   margin-top: 8px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -80,22 +81,21 @@
   gap: 12px;
   padding: 14px 18px;
   border-radius: 8px;
-  border: 0.5px solid rgba(0, 0, 0, 0.18);
-  background: #fff;
+  border: 1px solid var(--accent-border);
+  background: #0a0a0f;
   cursor: pointer;
   font-size: 15px;
-  color: #111;
+  color: #c4b5fd;
   text-align: left;
-  transition:
-    border-color 0.15s,
-    background 0.15s;
+  transition: all 0.3s;
   width: 100%;
   font-family: inherit;
 }
 
 .pq-option-btn:hover:not(:disabled) {
-  background: #f9fafb;
-  border-color: #534ab7;
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  transform: translateX(4px);
 }
 
 .pq-option-btn:disabled {
@@ -103,15 +103,15 @@
 }
 
 .pq-option-btn.correct {
-  border: 2px solid #0f6e56;
-  background: #e1f5ee;
-  color: #085041;
+  border: 2px solid #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  color: #6ee7b7;
 }
 
 .pq-option-btn.wrong {
-  border: 2px solid #993c1d;
-  background: #faece7;
-  color: #712b13;
+  border: 2px solid #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  color: #fca5a5;
 }
 
 /* Option letter badge */
@@ -119,54 +119,58 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #f3f4f6;
+  background: var(--accent-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   font-weight: 500;
   flex-shrink: 0;
-  color: #374151;
+  color: #c084fc;
+  border: 1px solid var(--accent-border);
 }
 
 .pq-option-btn.correct .pq-option-letter {
-  background: #5dcaa5;
-  color: #04342c;
+  background: #10b981;
+  color: #fff;
+  border-color: #10b981;
 }
 
 .pq-option-btn.wrong .pq-option-letter {
-  background: #f0997b;
-  color: #4a1b0c;
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
 }
 
-/* Réponse libre (typeQuestion !== choix multiple) */
+/* Réponse libre */
 .pq-open-input {
   width: 100%;
   padding: 12px 16px;
   border-radius: 8px;
-  border: 0.5px solid rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--accent-border);
   font-size: 15px;
   font-family: inherit;
-  color: #111;
-  background: #fff;
+  color: #e9d5ff;
+  background: #0a0a0f;
   resize: vertical;
   min-height: 80px;
-  transition: border-color 0.15s;
+  transition: all 0.3s;
 }
 
 .pq-open-input:focus {
   outline: none;
-  border-color: #534ab7;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
 }
 
 .pq-open-input:disabled {
-  background: #f9fafb;
+  background: #1a1729;
   cursor: default;
 }
 
 .pq-open-submit {
   margin-top: 10px;
-  background: #534ab7;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -175,10 +179,12 @@
   font-weight: 500;
   cursor: pointer;
   font-family: inherit;
+  transition: all 0.3s;
 }
 
 .pq-open-submit:hover {
-  background: #3c3489;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
 }
 
 /* Feedback */
@@ -191,13 +197,15 @@
 }
 
 .pq-feedback.ok {
-  background: #e1f5ee;
-  color: #085041;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid #10b981;
+  color: #6ee7b7;
 }
 
 .pq-feedback.ko {
-  background: #faece7;
-  color: #712b13;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  color: #fca5a5;
 }
 
 /* Navigation */
@@ -208,7 +216,7 @@
 }
 
 .pq-btn-primary {
-  background: #534ab7;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -217,32 +225,36 @@
   font-weight: 500;
   cursor: pointer;
   font-family: inherit;
+  transition: all 0.3s;
 }
 
 .pq-btn-primary:hover {
-  background: #3c3489;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
 }
 
 .pq-btn-secondary {
-  background: #f3f4f6;
-  color: #111;
-  border: 0.5px solid rgba(0, 0, 0, 0.18);
+  background: #1a1729;
+  color: #c084fc;
+  border: 1px solid var(--accent-border);
   border-radius: 8px;
   padding: 10px 24px;
   font-size: 15px;
   cursor: pointer;
   font-family: inherit;
+  transition: all 0.3s;
 }
 
 .pq-btn-secondary:hover {
-  border-color: #534ab7;
-  color: #534ab7;
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  transform: translateY(-2px);
 }
 
 /* Score final */
 .pq-score-card {
-  background: #fff;
-  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #1a1729, #12111a);
+  border: 1px solid var(--accent-border);
   border-radius: 12px;
   padding: 2.5rem;
   text-align: center;
@@ -251,13 +263,16 @@
 .pq-score-big {
   font-size: 48px;
   font-weight: 500;
-  color: #534ab7;
+  background: linear-gradient(135deg, #c084fc, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   margin: 0;
 }
 
 .pq-score-label {
   font-size: 16px;
-  color: #6b7280;
+  color: #c4b5fd;
   margin-top: 8px;
   margin-bottom: 0;
 }
