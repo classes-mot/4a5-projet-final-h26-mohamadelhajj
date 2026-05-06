@@ -15,6 +15,7 @@ import PlayQuiz from "./containers/PlayQuiz";
 import RootLayout from "./containers/Roots";
 import ErrorPage from "./Containers/ErrorPage";
 import { AuthContext } from "./context/auth-context";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 import "./App.css";
 
 const routerLogin = createBrowserRouter([
@@ -67,31 +68,37 @@ function App() {
   }, []);
   if (token) {
     return (
-      <AuthContext.Provider
-        value={{
-          isLoggedIn: true,
-          token: token,
-          userId: userId,
-          login: login,
-          logout: logout,
-        }}
-      >
-        <RouterProvider router={routerLogin} />
-      </AuthContext.Provider>
+      <div>
+        <AuthContext.Provider
+          value={{
+            isLoggedIn: true,
+            token: token,
+            userId: userId,
+            login: login,
+            logout: logout,
+          }}
+        >
+          <RouterProvider router={routerLogin} />
+        </AuthContext.Provider>
+        <LanguageSwitcher />
+      </div>
     );
   } else {
     return (
-      <AuthContext.Provider
-        value={{
-          isLoggedIn: !!token,
-          token: token,
-          userId: userId,
-          login: login,
-          logout: logout,
-        }}
-      >
-        <RouterProvider router={router} />
-      </AuthContext.Provider>
+      <div>
+        <AuthContext.Provider
+          value={{
+            isLoggedIn: !!token,
+            token: token,
+            userId: userId,
+            login: login,
+            logout: logout,
+          }}
+        >
+          <RouterProvider router={router} />
+        </AuthContext.Provider>
+        <LanguageSwitcher />
+      </div>
     );
   }
 }

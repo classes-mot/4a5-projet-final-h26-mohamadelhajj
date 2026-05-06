@@ -1,0 +1,98 @@
+{
+  "ModalLogin": {
+    "title": "Login",
+    "boutonConnexion": "Sign in",
+    "boutonAnnuler": "Cancel"
+  },
+  "ModalSupprimer": {
+    "title": "Confirm deletion",
+    "demandeSup": "Do you really want to delete this quiz? This action is irreversible.",
+    "boutonAnnuler": "Cancel"
+  },
+  "ModalSuprimerQuestion": {
+    "title": "Confirm deletion",
+    "demandeSup": "Do you really want to delete this question? This action is irreversible.",
+    "boutonAnnuler": "Cancel"
+  },
+  "MainNavigation": {
+    "title": "Interactive Quiz"
+  },
+  "NavLinks": {
+    "Allusers": "ALL USERS",
+    "MyQuizzes": "MY QUIZZES",
+    "AddQuiz": "ADD QUIZ",
+    "logout": "LOG OUT",
+    "login": "LOGIN",
+    "signup": "SIGN UP"
+  },
+  "QuestionItem": {
+    "edit": "EDIT",
+    "delete": "DELETE"
+  },
+  "QuestionList": {
+    "noQuestion": "No questions found."
+  },
+  "QuizItem": {
+    "play": "PLAY",
+    "edit": "EDIT",
+    "delete": "DELETE"
+  },
+  "QuizList": {
+    "noQuiz": "No quizzes found."
+  },
+  "ModalSignup": {
+    "title": "Create an account",
+    "annuler": "Cancel"
+  },
+  "ModalMessageErreur": {
+    "fermer": "Close"
+  },
+  "ErrorPage": {
+    "title": "An error occurred",
+    "text": "Could not find this page!"
+  },
+  "newQuestion": {
+    "title": "New question",
+    "nom": "Question name",
+    "typeQuestion": "Question type",
+    "select": "--Select--",
+    "write": "Write",
+    "reponse": "answer",
+    "reset": "Reset",
+    "add": "Add"
+  },
+  "newQuiz": {
+    "title": "New quiz",
+    "titleQuiz": "quiz title",
+    "reset": "Reset",
+    "add": "Add"
+  },
+  "PlayQuiz": {
+    "restart": "Restart",
+    "accueil": "Home"
+  },
+  "QuestionQuiz": {
+    "ajouter": "Add question",
+    "noQuestion": "No questions found."
+  },
+  "UpdateQuestion": {
+    "noQuestion": "Could not find question!",
+    "title": "Update question",
+    "nom": "Question name",
+    "typeQuestion": "Question type",
+    "write": "Write",
+    "reponse": "answer",
+    "reset": "Reset",
+    "update": "Update"
+  },
+  "UpdateQuiz": {
+    "noQuiz": "Could not find quiz!",
+    "title": "Update quiz",
+    "titleQuiz": "quiz title",
+    "reset": "Reset",
+    "update": "Update"
+  },
+  "UserQuiz": {
+    "noQuiz": "No quizzes found."
+  }
+}

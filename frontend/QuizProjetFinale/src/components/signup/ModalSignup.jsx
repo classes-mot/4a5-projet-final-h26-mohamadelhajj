@@ -1,12 +1,14 @@
 import { createPortal } from "react-dom";
+import { useTranslation } from "react-i18next";
 import "./ModalSignup.css";
 
 function ModalSignup({ onClose, onConfirm, onInputChange, values }) {
+  const { t } = useTranslation();
   return createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <header className="modal-header">
-          <h2>Créer Un compte</h2>
+          <h2>{t("ModalSignup.title")}</h2>
         </header>
 
         <div className="modal-body">
@@ -35,10 +37,10 @@ function ModalSignup({ onClose, onConfirm, onInputChange, values }) {
 
         <footer className="modal-footer">
           <button className="btn-secondary" onClick={onConfirm}>
-            Créer le compte
+            {t("ModalSignup.title")}
           </button>
           <button className="btn-danger" onClick={onClose}>
-            Annuler
+            {t("ModalSignup.annuler")}
           </button>
         </footer>
       </div>

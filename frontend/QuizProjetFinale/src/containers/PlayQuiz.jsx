@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useHttpClient } from "../hooks/http-hook";
 import ModalMessageErreur from "../components/UIElements/ModalMessageErreur";
 import Spinner from "../components/UIElements/LoadingSpinner";
@@ -17,6 +18,7 @@ const isCorrect = (userAnswer, reponse) =>
   userAnswer.trim().toLowerCase() === reponse.trim().toLowerCase();
 
 const PlayQuiz = () => {
+  const { t } = useTranslation();
   const { quizId } = useParams();
   const navigate = useNavigate();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -99,10 +101,10 @@ const PlayQuiz = () => {
           <p className="pq-score-label">{SCORE_LABELS[labelIdx]}</p>
           <div className="pq-btn-row">
             <button className="pq-btn-secondary" onClick={handleRestart}>
-              Recommencer
+              {t("PlayQuiz.restart")}
             </button>
             <button className="pq-btn-primary" onClick={() => navigate("/")}>
-              Accueil
+              {t("PlayQuiz.accueil")}
             </button>
           </div>
         </div>

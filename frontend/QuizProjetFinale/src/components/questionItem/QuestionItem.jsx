@@ -1,11 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Card from "../UIElements/Card";
 import { AuthContext } from "../../context/auth-context";
 import ModalSuprimerQuestion from "../modalSupprimerQuestion/ModalSuprimerQuestion";
 import "./QuestionItem.css";
 
 const QuestionItem = (props) => {
+  const { t } = useTranslation();
   const auth = useContext(AuthContext);
   const quizId = useParams().quizId;
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -63,13 +65,13 @@ const QuestionItem = (props) => {
             {auth.isLoggedIn && (
               <div className="question-item__actions">
                 <Link to={`/${quizId}/question/edit/${props.id}`}>
-                  <button>EDIT</button>
+                  <button>{t("QuestionItem.edit")}</button>
                 </Link>
                 <button
                   className="btn-danger"
                   onClick={showDeleteWarningHandler}
                 >
-                  DELETE
+                  {t("QuestionItem.delete")}
                 </button>
               </div>
             )}

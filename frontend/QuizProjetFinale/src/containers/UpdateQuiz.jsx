@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth-context";
 import { useHttpClient } from "../hooks/http-hook";
@@ -7,6 +8,7 @@ import Spinner from "../components/UIElements/LoadingSpinner";
 import "./QuizForm.css";
 
 function UpdateQuiz() {
+  const { t } = useTranslation();
   const quizId = useParams().quizId;
   const auth = useContext(AuthContext);
   const [loadedquiz, setLoadedQuiz] = useState([]);
@@ -34,7 +36,7 @@ function UpdateQuiz() {
   if (!quizSelected) {
     return (
       <div className="center">
-        <h2>Could not find quiz!</h2>
+        <h2>{t("UpdateQuiz.noQuiz")}</h2>
       </div>
     );
   }
@@ -65,14 +67,14 @@ function UpdateQuiz() {
 
   return (
     <form onSubmit={UpdateQuizSubmitHandler}>
-      <h2>Update quiz</h2>
+      <h2>{t("UpdateQuiz.title")}</h2>
       <div>
         {isLoading && <Spinner />}
         <ModalMessageErreur message={error} onClose={() => clearError()} />
       </div>
 
       <div className="control">
-        <label htmlFor="titre">Quiz title</label>
+        <label htmlFor="titre">{t("UpdateQuiz.titleQuiz")}</label>
         <input
           id="titre"
           type="text"
@@ -83,10 +85,10 @@ function UpdateQuiz() {
 
       <p className="form-actions">
         <button type="reset" className="button button-flat">
-          Reset
+          {t("UpdateQuiz.reset")}
         </button>
         <button type="submit" className="button">
-          Update
+          {t("UpdateQuiz.update")}
         </button>
       </p>
     </form>

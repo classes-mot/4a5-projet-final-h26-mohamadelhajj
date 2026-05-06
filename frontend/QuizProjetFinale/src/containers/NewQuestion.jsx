@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useHttpClient } from "../hooks/http-hook";
 import ModalMessageErreur from "../components/UIElements/ModalMessageErreur";
 import Spinner from "../components/UIElements/LoadingSpinner";
 import "./QuestionForm.css";
 
 const NewQuestion = () => {
+  const { t } = useTranslation();
   const quizId = useParams().quizId;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -30,32 +32,32 @@ const NewQuestion = () => {
 
   return (
     <form onSubmit={addQuestionSubmitHandler}>
-      <h2>New Question</h2>
+      <h2>{t("newQuestion.title")}</h2>
       <div>
         {isLoading && <Spinner />}
         <ModalMessageErreur message={error} onClose={() => clearError()} />
       </div>
       <div className="control">
-        <label>Question name</label>
+        <label>{t("newQuestion.nom")}</label>
         <input type="text" name="nomQuestion" />
       </div>
       <div className="control">
-        <label>Type of question</label>
+        <label>{t("newQuestion.typeQuestion")}</label>
         <select name="typeQuestion">
-          <option value="">--Select--</option>
-          <option value="Ecrire">Writing</option>
+          <option value="">{t("newQuestion.select")}</option>
+          <option value="Ecrire">{t("newQuestion.write")}</option>
         </select>
       </div>
       <div className="control">
-        <label>Answer</label>
+        <label>{t("newQuestion.reponse")}</label>
         <input type="text" name="reponse" />
       </div>
       <p className="form-actions">
         <button type="reset" className="button button-flat">
-          Reset
+          {t("newQuestion.reset")}
         </button>
         <button type="submit" className="button">
-          Add
+          {t("newQuestion.add")}
         </button>
       </p>
     </form>

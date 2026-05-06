@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth-context";
@@ -10,6 +11,7 @@ import Card from "../components/UIElements/Card";
 import "./QuestionQuiz.css";
 
 const QuestionQuiz = () => {
+  const { t } = useTranslation();
   const auth = useContext(AuthContext);
   const quizId = useParams().quizId;
   const [loadedQuestion, setLoadedQuestion] = useState([]);
@@ -44,14 +46,16 @@ const QuestionQuiz = () => {
         {auth.isLoggedIn && (
           <div className="question-quiz__actions">
             <Link to={`/${quizId}/question/add`}>
-              <button className="btn-primary">ADD QUESTION</button>
+              <button className="btn-primary">
+                {t("QuestionQuiz.ajouter")}
+              </button>
             </Link>
           </div>
         )}
 
         <div className="center">
           <Card>
-            <h2>No Questions found.</h2>
+            <h2>{t("QuestionQuiz.noQuestion")}</h2>
           </Card>
         </div>
       </div>

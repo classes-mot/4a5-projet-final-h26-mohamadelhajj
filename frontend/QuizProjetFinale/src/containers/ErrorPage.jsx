@@ -1,12 +1,14 @@
+import { useTranslation } from "react-i18next";
 import MainNavigation from "../components/Navigation/MainNavigation";
 
 const ErrorPage = (props) => {
+  const { t } = useTranslation();
   return (
     <>
       <MainNavigation />
       <main>
-        <h1>An error occurred </h1>
-        <p>Could not find this page!</p>
+        <h1>{t("ErrorPage.title")}</h1>
+        <p>{t("ErrorPage.text")}</p>
       </main>
     </>
   );

@@ -1,7 +1,6 @@
 import "./SideDrawer.css";
 
 import { createPortal } from "react-dom";
-import { useTransition } from "react";
 
 const SideDrawer = (props) => {
   const content = (

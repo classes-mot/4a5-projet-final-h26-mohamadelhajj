@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../context/auth-context";
 import ModalSignup from "../signup/ModalSignup";
 import ModalLogin from "../login/ModalLogin"; // Import du nouveau modal
@@ -7,6 +8,7 @@ import ModalLogin from "../login/ModalLogin"; // Import du nouveau modal
 import "./NavLinks.css";
 
 const NavLinks = (props) => {
+  const { t } = useTranslation();
   const auth = useContext(AuthContext);
 
   // États pour la visibilité des modaux
@@ -114,18 +116,20 @@ const NavLinks = (props) => {
 
       <ul className="nav-links">
         <li>
-          <NavLink to="/">ALL USERS</NavLink>
+          <NavLink to="/">{t("NavLinks.Allusers")}</NavLink>
         </li>
         {auth.isLoggedIn && (
           <>
             <li>
-              <NavLink to={`/${auth.userId}/quizzes`}>MY QUIZZES</NavLink>
+              <NavLink to={`/${auth.userId}/quizzes`}>
+                {t("NavLinks.MyQuizzes")}
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/quiz/add">ADD QUIZ</NavLink>
+              <NavLink to="/quiz/add">{t("NavLinks.AddQuiz")}</NavLink>
             </li>
             <li>
-              <button onClick={auth.logout}>LOGOUT</button>
+              <button onClick={auth.logout}>{t("NavLinks.logout")}</button>
             </li>
           </>
         )}
@@ -133,12 +137,12 @@ const NavLinks = (props) => {
           <>
             <li>
               <button className="nav-btn-link" onClick={openLoginHandler}>
-                LOGIN
+                {t("NavLinks.login")}
               </button>
             </li>
             <li>
               <button className="nav-btn-link" onClick={openSignupHandler}>
-                SIGNUP
+                {t("NavLinks.signup")}
               </button>
             </li>
           </>

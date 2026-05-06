@@ -1,12 +1,14 @@
 import { createPortal } from "react-dom";
+import { useTranslation } from "react-i18next";
 import "./ModalLogin.css";
 
 function ModalLogin({ onClose, onConfirm, onInputChange, values }) {
+  const { t } = useTranslation();
   return createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <header className="modal-header">
-          <h2>Connexion</h2>
+          <h2>{t("ModalLogin.title")}</h2>
         </header>
 
         <div className="modal-body">
@@ -28,10 +30,10 @@ function ModalLogin({ onClose, onConfirm, onInputChange, values }) {
 
         <footer className="modal-footer">
           <button className="btn-secondary" onClick={onConfirm}>
-            Se connecter
+            {t("ModalLogin.boutonConnexion")}
           </button>
           <button className="btn-danger" onClick={onClose}>
-            Annuler
+            {t("ModalLogin.boutonAnnuler")}
           </button>
         </footer>
       </div>

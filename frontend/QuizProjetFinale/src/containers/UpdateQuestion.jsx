@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useHttpClient } from "../hooks/http-hook";
 import ModalMessageErreur from "../components/UIElements/ModalMessageErreur";
 import Spinner from "../components/UIElements/LoadingSpinner";
 
 function UpdateQuestion() {
+  const { t } = useTranslation();
   const quizId = useParams().quizId;
   const questionId = useParams().questionId;
   const [loadedQuestion, setLoadedQuestion] = useState([]);
@@ -30,7 +32,7 @@ function UpdateQuestion() {
   if (!questionSelected) {
     return (
       <div className="center">
-        <h2>Could not find question!</h2>
+        <h2>{t("UpdateQuestion.noQuestion")}</h2>
       </div>
     );
   }
@@ -57,13 +59,13 @@ function UpdateQuestion() {
 
   return (
     <form onSubmit={UpdateQuestionSubmitHandler}>
-      <h2>Update question</h2>
+      <h2>{t("UpdateQuestion.title")}</h2>
       <div>
         {isLoading && <Spinner />}
         <ModalMessageErreur message={error} onClose={() => clearError()} />
       </div>
       <div className="control">
-        <label>Question name</label>
+        <label>{t("UpdateQuestion.nom")}</label>
         <input
           type="text"
           name="nomQuestion"
@@ -71,16 +73,16 @@ function UpdateQuestion() {
         />
       </div>
       <div className="control">
-        <label>Type of question</label>
+        <label>{t("UpdateQuestion.typeQuestion")}</label>
         <select
           name="typeQuestion"
           defaultValue={questionSelected.typeQuestion}
         >
-          <option value="Ecrire">Writing</option>
+          <option value="Ecrire">{t("UpdateQuestion.write")}</option>
         </select>
       </div>
       <div className="control">
-        <label htmlFor="reponse">Answer</label>
+        <label htmlFor="reponse">{t("UpdateQuestion.reponse")}</label>
         <input
           id="reponse"
           type="text"
@@ -90,10 +92,10 @@ function UpdateQuestion() {
       </div>
       <p className="form-actions">
         <button type="reset" className="button button-flat">
-          Reset
+          {t("UpdateQuestion.reset")}
         </button>
         <button type="submit" className="button">
-          Update
+          {t("UpdateQuestion.update")}
         </button>
       </p>
     </form>

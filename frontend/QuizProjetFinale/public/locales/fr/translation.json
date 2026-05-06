@@ -1,0 +1,98 @@
+{
+  "ModalLogin": {
+    "title": "Connexion",
+    "boutonConnexion": "Se connecter",
+    "boutonAnnuler": "Annuler"
+  },
+  "ModalSupprimer": {
+    "title": "Confirmer la suppression",
+    "demandeSup": "Voulez-vous vraiment supprimer ce quiz? Cette action est irréversible.",
+    "boutonAnnuler": "Annuler"
+  },
+  "ModalSuprimerQuestion": {
+    "title": "Confirmer la suppression",
+    "demandeSup": "Voulez-vous vraiment supprimer cette question? Cette action est irréversible.",
+    "boutonAnnuler": "Annuler"
+  },
+  "MainNavigation": {
+    "title": "Questionnaire intéractif"
+  },
+  "NavLinks": {
+    "Allusers": "TOUS LES UTILISATEURS",
+    "MyQuizzes": "MES QUIZ",
+    "AddQuiz": "AJOUTER QUIZ",
+    "logout": "DÉCONNEXION",
+    "login": "CONNEXION",
+    "signup": "s'inscrire"
+  },
+  "QuestionItem": {
+    "edit": "MODIFIER",
+    "delete": "SUPPRIMER"
+  },
+  "QuestionList": {
+    "noQuestion": "Aucune question trouvée."
+  },
+  "QuizItem": {
+    "play": "JOUER",
+    "edit": "MODIFIER",
+    "delete": "SUPPRIMER"
+  },
+  "QuizList": {
+    "noQuiz": "Aucun quiz trouvé."
+  },
+  "ModalSignup": {
+    "title": "Créer Un compte",
+    "annuler": "Annuler"
+  },
+  "ModalMessageErreur": {
+    "fermer": "Fermer"
+  },
+  "ErrorPage": {
+    "title": "Une erreur s'est produite",
+    "text": "Impossible de trouver cette page !"
+  },
+  "newQuestion": {
+    "title": "Nouvelle question",
+    "nom": "Nom de la Question",
+    "typeQuestion": "Type de question",
+    "select": "--Sélectionner--",
+    "write": "Écrire",
+    "reponse": "réponse",
+    "reset": "Réinitialiser",
+    "add": "Ajouter"
+  },
+  "newQuiz": {
+    "title": "Nouveau quiz",
+    "titleQuiz": "titre du quiz",
+    "reset": "Réinitialiser",
+    "add": "Ajouter"
+  },
+  "PlayQuiz": {
+    "restart": "Recommencer",
+    "accueil": "Accueil"
+  },
+  "QuestionQuiz": {
+    "ajouter": "Ajouter question",
+    "noQuestion": "Aucune question trouvée."
+  },
+  "UpdateQuestion": {
+    "noQuestion": "Impossible de trouver la question !",
+    "title": "Question de mise à jour",
+    "nom": "Nom de la Question",
+    "typeQuestion": "Type de question",
+    "write": "Écrire",
+    "reponse": "réponse",
+    "reset": "Réinitialiser",
+    "update": "Mise à jour"
+  },
+  "UpdateQuiz": {
+    "noQuiz": "Impossible de trouver le quiz !",
+    "title": "Mettre à jour le quiz",
+    "titleQuiz": "titre du quiz",
+    "reset": "Réinitialiser",
+    "update": "Mise à jour"
+  },
+  "UserQuiz": {
+    "noQuiz": "Aucun quiz trouvé."
+  }
+}

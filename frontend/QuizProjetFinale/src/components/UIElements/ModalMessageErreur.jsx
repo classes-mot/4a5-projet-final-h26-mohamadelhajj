@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ModalMessageErreur = ({ message, onClose }) => {
+  const { t } = useTranslation();
   if (!message) return null;
 
   return (
@@ -17,7 +19,7 @@ const ModalMessageErreur = ({ message, onClose }) => {
     >
       <h2>Erreur</h2>
       <p>{message}</p>
-      <button onClick={onClose}>Fermer</button>
+      <button onClick={onClose}>{t("ModalMessageErreur.fermer")}</button>
     </div>
   );
 };

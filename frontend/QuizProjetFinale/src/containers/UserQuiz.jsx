@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import QuizList from "../components/quizList/QuizList";
 import ModalMessageErreur from "../components/UIElements/ModalMessageErreur";
@@ -7,6 +8,7 @@ import { useHttpClient } from "../hooks/http-hook";
 import Card from "../components/UIElements/Card";
 
 const UserQuiz = () => {
+  const { t } = useTranslation();
   const userId = useParams().userId;
   const [loadedquiz, setLoadedQuiz] = useState([]);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -38,7 +40,7 @@ const UserQuiz = () => {
     return (
       <div className="center">
         <Card>
-          <h2>No Quizzes found.</h2>
+          <h2>{t("UserQuiz.noQuiz")}</h2>
         </Card>
       </div>
     );
