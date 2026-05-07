@@ -13,7 +13,7 @@ import NewQuestion from "./containers/NewQuestion";
 import UpdateQuestion from "./containers/UpdateQuestion";
 import PlayQuiz from "./containers/PlayQuiz";
 import RootLayout from "./containers/Roots";
-import ErrorPage from "./Containers/ErrorPage";
+import ErrorPage from "./containers/ErrorPage";
 import { AuthContext } from "./context/auth-context";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import "./App.css";
