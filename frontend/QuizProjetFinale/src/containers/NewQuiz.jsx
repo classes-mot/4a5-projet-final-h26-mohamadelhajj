@@ -26,7 +26,7 @@ const NewQuiz = () => {
     console.log("---------------");
 
     await sendRequest(
-      "http://localhost:5000/api/quiz/newQuiz",
+      import.meta.env.VITE_BACKEND_URL + "quiz/newQuiz",
       "POST",
       JSON.stringify(newQuiz),
       {

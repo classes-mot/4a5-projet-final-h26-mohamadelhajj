@@ -44,16 +44,19 @@ const NavLinks = (props) => {
   // Logique d'inscription
   const confirmSignupHandler = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/users/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-          quiz: [],
-        }),
-      });
+      const response = await fetch(
+        import.meta.env.VITE_BACKEND_URL + "users/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            password: formData.password,
+            quiz: [],
+          }),
+        },
+      );
 
       const responseData = await response.json();
       if (!response.ok)
@@ -69,14 +72,17 @@ const NavLinks = (props) => {
   // LOGIQUE DE CONNEXION (Backend : /api/users/login)
   const confirmLoginHandler = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/users/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
-      });
+      const response = await fetch(
+        import.meta.env.VITE_BACKEND_URL + "users/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        },
+      );
 
       const responseData = await response.json();
 

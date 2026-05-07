@@ -13,7 +13,7 @@ const Users = () => {
       try {
         console.log("users");
         const reponse = await sendRequest(
-          "http://localhost:5000/api/users/allUsers",
+          import.meta.env.VITE_BACKEND_URL + "users/allUsers",
         );
         console.log(reponse);
         setLoadedUsers(reponse.users);

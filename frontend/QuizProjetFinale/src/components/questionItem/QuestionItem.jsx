@@ -28,7 +28,8 @@ const QuestionItem = (props) => {
     setShowConfirmModal(false);
     try {
       const response = await fetch(
-        `http://localhost:5000/api/questions/deleteQuestion/${props.id}`,
+        import.meta.env.VITE_BACKEND_URL +
+          `questions/deleteQuestion/${props.id}`,
         {
           method: "DELETE",
           headers: {

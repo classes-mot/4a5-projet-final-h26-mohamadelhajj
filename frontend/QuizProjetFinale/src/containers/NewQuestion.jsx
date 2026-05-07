@@ -23,7 +23,7 @@ const NewQuestion = () => {
     };
 
     await sendRequest(
-      `http://localhost:5000/api/questions/newQuestion/${quizId}`,
+      import.meta.env.VITE_BACKEND_URL + `questions/newQuestion/${quizId}`,
       "POST",
       JSON.stringify(newQuestion),
     );

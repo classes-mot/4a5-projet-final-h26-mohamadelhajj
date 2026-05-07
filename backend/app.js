@@ -5,9 +5,15 @@ import questionsRoutes from "./routes/questions-routes.js";
 import errorHandler from "./handler/error-handler.js";
 import { connectDB } from "./utils/bd.js";
 
-await connectDB();
+const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost:27017/MohamadElhajj_BDQuiz";
+
+// Connexion à MongoDB
+await connectDB(MONGODB_URI);
 
 const app = express();
+// chercher les variables d'environnemnt
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
@@ -35,6 +41,6 @@ app.use((req, res, next) => {
 
 app.use(errorHandler);
 
-app.listen(5000, () => {
-  console.log("serveur écoute au", `http://localhost:5000`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

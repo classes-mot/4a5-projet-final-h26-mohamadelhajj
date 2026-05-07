@@ -23,7 +23,7 @@ const QuestionQuiz = () => {
       try {
         console.log("questions");
         const response = await sendRequest(
-          `http://localhost:5000/api/questions/getQuestions/${quizId}`,
+          import.meta.env.VITE_BACKEND_URL + `questions/getQuestions/${quizId}`,
         );
         console.log(response);
         setLoadedQuestion(response.questions);

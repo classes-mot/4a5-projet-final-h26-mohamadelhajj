@@ -1,16 +1,15 @@
 import mongoose from "mongoose";
 
-let connection = false;
+let isConnected = false;
 
-export const connectDB = async () => {
-  if (connection) return;
-  let uri = "mongodb://localhost:27017/MohamadElhajj_BDQuiz";
+export const connectDB = async (db_uri) => {
+  if (isConnected) return;
   try {
-    await mongoose.connect(uri);
-    connection = true;
+    await mongoose.connect(db_uri);
+    isConnected = true;
     console.log("Connexion MongoDB réussie");
-  } catch (e) {
-    console.error("Erreur de connexion MongoDB :", e.message);
-    process.exit(1);
+  } catch (err) {
+    console.error("Erreur de connexion MongoDB :", err.message);
+    process.exit(1); // Arrête le serveur en cas d’échec
   }
 };

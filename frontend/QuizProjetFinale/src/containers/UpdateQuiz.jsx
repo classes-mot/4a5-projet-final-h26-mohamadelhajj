@@ -20,7 +20,7 @@ function UpdateQuiz() {
       try {
         console.log("quizzes");
         const response = await sendRequest(
-          `http://localhost:5000/api/quiz/getQuiz/${auth.userId}`,
+          import.meta.env.VITE_BACKEND_URL + `quiz/getQuiz/${auth.userId}`,
         );
         console.log(response);
         setLoadedQuiz(response.quiz);

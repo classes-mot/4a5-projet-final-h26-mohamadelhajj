@@ -19,7 +19,7 @@ const UserQuiz = () => {
       try {
         console.log("quizzes");
         const response = await sendRequest(
-          `http://localhost:5000/api/quiz/getQuiz/${userId}`,
+          import.meta.env.VITE_BACKEND_URL + `quiz/getQuiz/${userId}`,
         );
         console.log(response);
         setLoadedQuiz(response.quiz);

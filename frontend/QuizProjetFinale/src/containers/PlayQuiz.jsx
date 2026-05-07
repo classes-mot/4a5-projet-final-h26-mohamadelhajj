@@ -35,7 +35,7 @@ const PlayQuiz = () => {
     const fetchQuestions = async () => {
       try {
         const response = await sendRequest(
-          `http://localhost:5000/api/questions/getQuestions/${quizId}`,
+          import.meta.env.VITE_BACKEND_URL + `questions/getQuestions/${quizId}`,
         );
         setQuestions(response.questions);
       } catch (err) {
